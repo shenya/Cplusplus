@@ -2,6 +2,7 @@
 #define _JOB_BASE_H
 
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -13,6 +14,8 @@ public:
     JobBase();
     JobBase(string jobContent, int monthSalary);
     JobBase(JobBase &copyJobBase);
+    friend ostream& operator<<(ostream &os, const JobBase &job);
+    friend istream& operator>>(istream &is, JobBase &job);
     ~JobBase();
     virtual void print();
 };

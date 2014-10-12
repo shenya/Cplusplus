@@ -4,7 +4,7 @@
 
 using namespace std;
 
-JobBase::JobBase() {};
+JobBase::JobBase():mMonthSalary(0), mJobContent("what") {};
 
 JobBase::JobBase(string jobContent, int monthSalary) {
     mJobContent = jobContent;
@@ -22,4 +22,16 @@ void JobBase::print() {
 
 JobBase::~JobBase() {
     cout<<"~JobBase()"<<endl;
+}
+
+ostream& operator<<(ostream &os, const JobBase &job) {
+    os << "JobBase:";
+    os << "mJobContent " << job.mJobContent << ",";
+    os << "mMonthSalary "<< job.mMonthSalary;
+    return os;
+}
+
+istream& operator>>(istream &is, JobBase &job) {
+   is >> job.mJobContent >> job.mMonthSalary;
+   return is;
 }
